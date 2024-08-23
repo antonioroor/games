@@ -1,0 +1,80 @@
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
+    @if (idGame) {
+    <h3 class="mb-3">{{ 'editGame' | translate }}</h3>
+    } @else {
+    <h3 class="mb-3">{{ 'newGame' | translate }}</h3>
+    }
+
+    <hr />
+    <form [formGroup]="form">
+      <div class="row">
+        <div class="col-md-6">
+          <label for="title" class="form-label">{{ 'title' | translate }}</label>
+          <input type="text" class="form-control" id="title" required formControlName='title' />
+          @if (!validField('title')) {
+          <span class="form-text text-danger">
+            {{ 'requiredField' | translate }}
+          </span>
+          }
+        </div>
+
+        <div class="col-md-6">
+          <label for="category" class="form-label">{{ 'category' | translate }}</label>
+          <input type="text" class="form-control" id="category" required formControlName='category' />
+          @if (!validField('category')) {
+          <span class="form-text text-danger">
+            {{ 'requiredField' | translate }}
+          </span>
+          }
+        </div>
+
+        <div class="col-md-6 mt-2">
+          <label for="platform" class="form-label">{{ 'platform' | translate }}</label>
+          <input type="text" class="form-control" id="platform" required formControlName='platform' />
+          @if (!validField('platform')) {
+          <span class="form-text text-danger">
+            {{ 'requiredField' | translate }}
+          </span>
+          }
+        </div>
+
+        <div class="col-md-6 mt-2">
+          <label for="year" class="form-label">{{ 'year' | translate }}</label>
+          <input type="number" class="form-control" id="year" required formControlName='year' required />
+          @if(!validField('year')){
+          <span class="form-text text-danger">
+            {{ 'requiredField' | translate }}
+          </span>
+          }
+        </div>
+
+        <div class="col-md-12 mt-2">
+          <label for="description" class="form-label"> {{ 'description' | translate }}</label>
+          <div class="form-floating">
+            <textarea class="form-control" [placeholder]="'bio' | translate" id="description" style="height: 200px"
+              formControlName='description'></textarea>
+          </div>
+        </div>
+
+        <div class="col-12 text-end mt-3 pb-5">
+          <button type="button" class="btn btn-secondary" routerLink="/juegos">
+            {{ 'cancel' | translate }}
+          </button>
+          &nbsp;
+          @if (idGame) {
+          <button type="button" class="btn btn-primary" (click)="updateGame()" [disabled]="!form.valid">
+            {{ 'update' | translate }}
+          </button>
+          } @else {
+          <button type="button" class="btn btn-primary" (click)="saveGame()" [disabled]="!form.valid">
+            {{ 'save' | translate }}
+          </button>
+          }
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-md-1"></div>
+</div>

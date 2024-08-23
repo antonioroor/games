@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-md-6">
+    <h3>{{ 'gameList' | translate }}</h3>
+  </div>
+
+  <div class="col-md-6 text-end">
+    <button type="button" class="btn btn-primary" routerLink="/nuevo-juego">
+      {{ 'add' | translate }}
+    </button>
+  </div>
+</div>
+
+<table class="table table-striped mt-3">
+  <thead>
+    <tr>
+      <th scope="col" style="width: 35%;">{{'title' | translate}}</th>
+      <th scope="col">{{'platform' | translate}}</th>
+      <th scope="col">{{'category' | translate}}</th>
+      <th scope="col">{{'year' | translate}}</th>
+      <th scope="col">{{'actions' | translate}} </th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (game of gamesToShow | slice: (page-1) * pageSize : page * pageSize; track $index) {
+    <tr>
+      <td>{{game.title}}</td>
+      <td>{{game.platform}}</td>
+      <td>{{game.category}}</td>
+      <td>{{game.year}}</td>
+      <td>
+        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modal"
+          (click)="setIdGameToDelete(game.id)">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+        &nbsp;
+        <button type="button" class="btn btn-success btn-sm" routerLink="/editar-juego/{{game.id}}">
+          <i class="fa-solid fa-pencil"></i>
+          </button>
+      </td>
+    </tr>
+    }
+
+  </tbody>
+</table>
+<ngb-pagination *ngIf="gamesToShow && gamesToShow.length > 0" [collectionSize]="gamesToShow.length"
+  [pageSize]="pageSize" [(page)]="page" aria-label="Default pagination">
+</ngb-pagination>
+
+<app-game-modal [idGame]="idGame" (gameModalEvent)="reloadTable($event)"></app-game-modal>

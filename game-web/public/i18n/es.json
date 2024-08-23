@@ -1,0 +1,23 @@
+{
+  "accept": "Aceptar",
+  "actions": "Acciones",
+  "add": "Añadir",
+  "bio": "Biografía",
+  "cancel": "Cancelar",
+  "category": "Categoría",
+  "createOk": "Juego creado con éxito",
+  "deleteGame": "Eliminar juego",
+  "deleteGameConfirmation": "¿Seguro que desea eliminar el juego?",
+  "description": "Descripción",
+  "editGame": "Editar juego",
+  "error": "Se ha producido un error en la aplicación",
+  "gameList": "Lista de Juegos",
+  "newGame": "Nuevo Juego",
+  "platform": "Plataforma",
+  "requiredField": "Este campo es obligatorio",
+  "save": "Guardar",
+  "title": "Título",
+  "update": "Actualizar",
+  "updateOk": "Juego actualizado con éxito",
+  "year": "Año"
+}
