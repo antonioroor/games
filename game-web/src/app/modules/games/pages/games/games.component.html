@@ -43,7 +43,7 @@
   </tbody>
 </table>
 <ngb-pagination *ngIf="gamesToShow && gamesToShow.length > 0" [collectionSize]="gamesToShow.length"
-  [pageSize]="pageSize" [(page)]="page" aria-label="Default pagination">
+  [pageSize]="pageSize" [(page)]="page">
 </ngb-pagination>
 
 <app-game-modal [idGame]="idGame" (gameModalEvent)="reloadTable($event)"></app-game-modal>
